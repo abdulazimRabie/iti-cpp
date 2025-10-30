@@ -34,7 +34,7 @@ void benchmarkVector(const vector<T>& data, double& minTime, double& maxTime, do
         times_duration.push_back(duration);
     }
 
-    // Calculate min, max, average
+    // min, max, average
     minTime = *min_element(times_duration.begin(), times_duration.end());
     maxTime = *max_element(times_duration.begin(), times_duration.end());
     avgTime = accumulate(times_duration.begin(), times_duration.end(), 0.0) / times_duration.size();
@@ -50,15 +50,15 @@ void run_t_7() {
 
         cout << "--- Benchmarking INT ---" << endl;
         benchmarkVector(intVec, minT, maxT, avgT);
-        cout << "Min: " << minT << " ms, \nMax: " << maxT << " ms, \nAvg: " << avgT << " ms\n\n";
+        cout << "Min: " << minT << " micro sec, \nMax: " << maxT << " micro sec, \nAvg: " << avgT << " micro sec\n\n";
 
         cout << "--- Benchmarking DOUBLE ---" << endl;
         benchmarkVector(doubleVec, minT, maxT, avgT);
-        cout << "Min: " << minT << " ms, \nMax: " << maxT << " ms, \nAvg: " << avgT << " ms\n\n";
+        cout << "Min: " << minT << " micro sec, \nMax: " << maxT << " micro sec, \nAvg: " << avgT << " micro sec\n\n";
 
         cout << "--- Benchmarking STRING ---" << endl;
         benchmarkVector(stringVec, minT, maxT, avgT);
-        cout << "Min: " << minT << " ms, \nMax: " << maxT << " ms, \nAvg: " << avgT << " ms\n\n";
+        cout << "Min: " << minT << " micro sec, \nMax: " << maxT << " micro sec, \nAvg: " << avgT << " micro sec\n\n";
 
 
         // exception !

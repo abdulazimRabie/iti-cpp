@@ -65,7 +65,6 @@ void run_t_3() {
     ;
 
     Department dept;
-
     dept.name = "Tech";
 
     dept.emps.push_back(emp1);
@@ -75,15 +74,18 @@ void run_t_3() {
     Department dept1;
     dept1.name = "Finance";
 
-    dept.emps.push_back(emp4);
-    dept.emps.push_back(emp5);
-    dept.emps.push_back(emp6);
+    dept1.emps.push_back(emp4);
+    dept1.emps.push_back(emp5);
+    dept1.emps.push_back(emp6);
 
     vector<Department> all_depts = {dept, dept1};
 
-    // h_dpept(all_depts);
+    h_dpept(all_depts);
 
-    // display_employees(dept);
+    cout << "=========== \n";
 
-    // disply_with_heighes_salary(&dept);
+    display_employees(dept);
+
+    cout << "=========== \n";
+    disply_with_heighes_salary(&dept);
 }

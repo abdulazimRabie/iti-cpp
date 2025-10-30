@@ -1,4 +1,4 @@
-#prgma once
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
@@ -20,7 +20,7 @@ int isExisted(vector<Student>& std_db, int id) {
 }
 
 void addStudent(vector<Student>& std_db, Student student) {
-    if (isExisted(std_db, student.id) < 0)
+    if (isExisted(std_db, student.id) >= 0) // if existed, cannot add new one with same id
         throw runtime_error("This id of this student already existed !!");
     std_db.push_back(student);
 }
@@ -66,5 +66,52 @@ void run_t_6() {
     students.push_back({3, "Charlie", 21, 'A'});
     students.push_back({4, "Diana", 22, 'C'});
 
+    displayAllStudent(students);
+
+    // Test 1: Add a new student
+    try {
+        cout << "\nAdding a new student (Eve)...\n";
+        addStudent(students, {5, "Eve", 23, 'B'});
+        cout << "Student added successfully!\n";
+    } catch (runtime_error& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    // Test 2: Try to add duplicate ID
+    try {
+        cout << "\nAdding a duplicate student with ID=2...\n";
+        addStudent(students, {2, "Fake Bob", 25, 'F'});
+    } catch (runtime_error& e) {
+        cout << "Expected Error: " << e.what() << endl;
+    }
+
+    // Test 3: Search for existing student
+    try {
+        cout << "\nSearching for student ID=3...\n";
+        Student s = searchStudent(students, 3);
+        cout << "Found: " << s.name << " (Age " << s.age << ", Grade " << s.grade << ")\n";
+    } catch (runtime_error& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    // Test 4: Search for non-existing student
+    try {
+        cout << "\nSearching for non-existing student ID=10...\n";
+        Student s = searchStudent(students, 10);
+    } catch (runtime_error& e) {
+        cout << "Expected Error: " << e.what() << endl;
+    }
+
+    // Test 5: Update student info
+    try {
+        cout << "\nUpdating student ID=2 (Bob -> Bobby)...\n";
+        updateStudent(students, 2, {2, "Bobby", 20, 'A'});
+        cout << "Update successful!\n";
+    } catch (runtime_error& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    // Test 6: Display updated list
+    cout << "\nUpdated Students List:\n";
     displayAllStudent(students);
 }
